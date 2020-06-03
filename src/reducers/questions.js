@@ -5,7 +5,7 @@ export default function questions(state={},action){
 		case RECEIVE_QUESTIONS:
 			return{
 				...state,
-				...actions.questions
+				...action.questions
 			}
 
 		default: return state
