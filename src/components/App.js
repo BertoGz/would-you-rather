@@ -16,10 +16,19 @@ class App extends Component{
   render(){
     return(
       <div>
-        <QuestionList/>
+        {
+          this.props.loading === true ?
+          null : <QuestionList/>
+        }
       </div>
     )
   }
 }
 
-export default connect()(App)
+function mapStateToProps({authedUser}){
+  return{
+    loading: authedUser === null
+  }
+}
+
+export default connect(mapStateToProps)(App)

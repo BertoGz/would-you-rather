@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import QuestionItem from './QuestionItem'
 class QuestionList extends Component{
 	render(){
 		return(
@@ -8,7 +9,8 @@ class QuestionList extends Component{
 				<ul className=''>
 					{this.props.questionIds.map((id)=>(
 						<li key={id}>
-							<div>Question ID: {id}</div>
+		
+							<QuestionItem id={id}/>
 						</li>
 					))}
 				</ul>
