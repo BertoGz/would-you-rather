@@ -1,20 +1,4 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  color: #252525;
-}
 
-a {
-  text-decoration: none;
-  color: #252525;
-}
-
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 10px;
-}
 
 .btn {
   text-transform: uppercase;
@@ -27,6 +11,17 @@ a {
   width: 250px;
   position: relative;
 }
+
+
+
+.toggleButton {
+background-color: #1F2833;
+
+}
+
+
+
+
 
 .btn:hover {
   border-color: rgba(0,0,0,.5);
@@ -47,16 +42,7 @@ a {
   font-weight: bold;
 }
 
-.nav ul {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  text-decoration: none;
-}
 
-.nav li:first-child {
-  padding-left: 0;
-}
 
 ul {
   padding-left: 0;
@@ -74,90 +60,99 @@ li {
   margin: 10px;
 }
 
-.tweet {
+
+.question-list-container{
+  width: 100%;
+  max-width: 600px;
+  padding: 0px;
+
+  margin: 0 auto;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.question-tab{
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
+
+
+.question-item-container {
   width: 100%;
   max-width: 590px;
-  padding: 10px;
-  display: flex;
+  padding: 0px;
+
   margin: 0 auto;
   border: 1px solid #dad7d7;
   border-radius: 3px;
   cursor: pointer;
 }
+.question-item-upper{
+  margin: 0px auto;
+  border: 0px;
+  padding: 20px;
+  background-color: rgb(200,200,200)
+}
+.question-lower{
+  display:flex;
+  flex-direction: row;
+    background-color: rgb(230,230,230);
+}
+.avatar{
 
-.tweet-info {
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Hacky but less typing in the video */
-.tweet-info > div > span:first-child {
-  font-weight: bold;
-  margin-right: 5px;
-}
-.tweet-info > div > span:nth-child(2) {
-  color: #969696;
-  font-size: 16px;
-}
-.tweet-info > div > div {
-  color: #969696;
-  font-size: 15px;
-}
-.tweet-info > div > p {
-  font-size: 18px;
-  margin: 10px 0;
-}
-.tweet-icons {
-  display: flex;
-  align-items: center;
-}
-.tweet-icons > span {
-  color: #969696;
-  margin: 0 15px 0 5px;
-  font-size: 18px !important;
-}
-.tweet-icon {
-  font-size: 27px;
-  color: #697784;
-}
-.tweet-icon:hover {
-  color: #00b5d6;
-  cursor: pointer;
-}
-.replying-to {
-  border: none;
-  background: transparent;
-  margin: 0;
-  padding: 0;
-  color: #969696;
-  cursor: pointer;
-}
-
-.heart-button {
-  background: transparent;
-  border: none;
-}
-
-.new-tweet {
-  width: 100%;
-  max-width: 590px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.textarea {
-  border-radius: 4px;
-  border: 1px solid #dad7d7;
-  padding: 10px;
-  font-size: 15px;
   height: 100px;
+  border-radius: 25px;
+  margin: 10px 40px 10px 40px;
+  display: flex;
+  align-self: center;
 }
 
-.tweet-length {
-  text-align: right;
-  margin-top: 10px;
-  font-size: 20px;
-  color: #C3392A;
+
+
+
+
+.question-poll{
+  width: 100%;
+  padding: 20px 20px 0px 20px;
+  display:flex;
+  flex-direction: column;
+  background-color: rgb(240,240,240);
 }
+.question-poll h3,h4 {
+  border: 0px auto;
+  margin: 0px;
+  height:50px;
+}
+.question-poll h4{
+  font-size: 90%;
+}
+.question-poll button{
+  margin: 20px 20px;
+}
+
+
+
+
+.question-poll-options{
+  display: flex;
+  flex-direction: column;
+}
+.question-poll-unanswered {
+  display:flex;
+  flex-direction: column;
+  width:64px;
+}
+
+
+.toggleButton-unanswered{
+background-color: #1F2833;
+margin:0px ;
+width: 64px;
+}
+
+
+@import '~bootstrap/dist/css/bootstrap.min.css';

@@ -25,7 +25,7 @@ export function formatQuestion (question, author, authedUser) {
     avatar: avatarURL,
     optionOne,
     optionTwo,
-    hasvoted: question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser)
+    //hasvoted: question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser)
   }
 }
 

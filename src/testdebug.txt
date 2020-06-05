@@ -1,0 +1,34 @@
+/*import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import QuestionItem from './QuestionItem'
+class QuestionList extends Component{
+	render(){
+		return(
+			<div>
+				<h3 className='center'>Questions</h3>
+				<ul className=''>
+
+					{this.props.questionHasVotedIds.filter((id)=>
+						( id==='6ni6ok3ym7mf1p33lnez' &&
+						<li key={id}>
+							<p>{id}</p>
+							<QuestionItem id={id} />
+						</li>
+						)
+					)
+					}
+				</ul>
+			</div>
+		)
+	}
+}
+
+function mapStateToProps({questions,authedUser}){
+	return{
+
+		questionHasVotedIds : Object.keys(questions)
+
+	}
+}
+
+export default connect(mapStateToProps)(QuestionList)
