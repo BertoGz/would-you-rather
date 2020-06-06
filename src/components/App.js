@@ -5,6 +5,7 @@ import {handleInitialData} from '../actions/shared'
  
 
  import QuestionList from './QuestionList'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 
 class App extends Component{
 
@@ -15,12 +16,18 @@ class App extends Component{
 
   render(){
     return(
-      <div>
-        {
-          this.props.loading === true ?
-          null : <QuestionList/>
-        }
-      </div>
+      <Router>
+          <div>
+            {
+              this.props.loading === true ?
+              null : 
+              <div> 
+                <Route path='/' exact component={QuestionList}/>
+                <Route path='/poll' exact component={QuestionList}/>
+              </div> 
+            }
+          </div>
+      </Router>
     )
   }
 }

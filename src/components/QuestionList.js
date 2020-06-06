@@ -6,6 +6,10 @@ import QuestionItem from './QuestionItem'
 const NOT_VOTED = 'NOT_VOTED'
 const VOTED = 'VOTED'
 
+const SHOW_POLL = 'SHOW_POLL'
+const SHOW_POLL_UNANSWERED = 'SHOW_POLL_UNANSWERED'
+
+
 
 
 class QuestionList extends Component{
@@ -32,15 +36,11 @@ class QuestionList extends Component{
 
 
 
-				<div className='question-tab'>
-					
+				<div className='question-tab'>	
 					<ToggleButtonGroup type="radio" name='options' value={value} onChange={handleChange}>
 					      <ToggleButton className='toggleButton' value='NOT_VOTED'>UnAnswered</ToggleButton>
 					      <ToggleButton className='toggleButton' value='VOTED'>Answered</ToggleButton>
 					</ToggleButtonGroup>
-
-
-
 				</div>
 
 				{ this.state.tab === VOTED ? 

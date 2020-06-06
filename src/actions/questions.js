@@ -1,3 +1,4 @@
+
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 
 export function receiveQuestionsAction(questions){
