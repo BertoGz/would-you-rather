@@ -7,9 +7,6 @@ import QuestionPoll from './QuestionPoll'
 import QuestionPollUnanswered from './QuestionPollUnanswered'
 
 
-const SHOW_POLL_FACE = '/'
-const SHOW_POLL_UNANSWERED ='SHOW_POLL_UNANSWERED'
-const NULL = 'NULL'
 
 class QuestionItem extends Component{
 

@@ -1,9 +1,8 @@
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
-import Button from 'react-bootstrap/Button'
 import React, {Component} from 'react'
+import {handleVoteQuestionAction} from '../actions/questions'
 import {connect} from 'react-redux'
-
 
 class QuestionPollUnanswered extends Component{
   constructor(props) {
@@ -19,8 +18,18 @@ class QuestionPollUnanswered extends Component{
   }
 
   handleSubmit(event) {
-    alert('Your favorite flavor is: ' + this.state.value);
     event.preventDefault();
+
+    const {dispatch} = this.props
+    
+    let myVote = {
+      authedUser: this.authedUser, 
+      qid: this.props.question.id, 
+      answer: "optionOne"
+    }
+
+    dispatch(handleVoteQuestionAction(myVote))
+
   }
 
   render(){
@@ -44,14 +53,14 @@ class QuestionPollUnanswered extends Component{
                       label={this.props.question.optionOne.text}
                       name="formHorizontalRadios"
                       id="formHorizontalRadios1"
-                      value="1"
+                      value="optionOne"
                     />
                     <Form.Check
                       type="radio"
                       label={this.props.question.optionTwo.text}
                       name="formHorizontalRadios"
                       id="formHorizontalRadios2"
-                      value="2"
+                      value="optionTwo"
                     />
                   </Col>
 
@@ -70,8 +79,11 @@ class QuestionPollUnanswered extends Component{
 	}
 }
 
-function mapStateToProps({}){
 
+function mapStateToProps({authedUser}){ //id is a prop passed from question list
+  return{
+    authedUser,
+  }
 }
 
-export default QuestionPollUnanswered
+export default connect(mapStateToProps)(QuestionPollUnanswered)

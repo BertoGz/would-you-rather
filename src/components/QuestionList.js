@@ -6,9 +6,6 @@ import QuestionItem from './QuestionItem'
 const NOT_VOTED = 'NOT_VOTED'
 const VOTED = 'VOTED'
 
-const SHOW_POLL = 'SHOW_POLL'
-const SHOW_POLL_UNANSWERED = 'SHOW_POLL_UNANSWERED'
-
 
 
 

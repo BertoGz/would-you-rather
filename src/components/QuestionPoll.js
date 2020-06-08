@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { connect } from 'react-redux'
+
 
 
 
@@ -17,12 +17,6 @@ class QuestionPoll extends Component{
 	}
 }
 
-function mapStateToProps({}){
 
 
-	return {
-
-	}
-}
-
-export default connect( mapStateToProps )(QuestionPoll)
+export default (QuestionPoll)

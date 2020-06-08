@@ -1,5 +1,9 @@
+import {saveQuestionAnswer} from '../utils/api'
+import {showLoading, hideLoading} from 'react-redux-loading'
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
+export const VOTE_QUESTION = 'VOTE_QUESTION'
+export const ADD_QUESTION = 'ADD_QUESTION'
 
 export function receiveQuestionsAction(questions){
 	return{
@@ -7,3 +11,30 @@ export function receiveQuestionsAction(questions){
 		questions
 	}
 }
+
+///////////////////////////////////////////////
+
+function voteQuestionAction({qid,authedUser,answer}){
+	return{
+		type: VOTE_QUESTION,
+		qid,
+		authedUser,
+		answer
+	}
+}
+
+export function handleVoteQuestionAction(vote){
+	return (dispatch)=>{
+		const {authedUser,qid,answer} = vote
+
+		dispatch(showLoading())
+
+		return saveQuestionAnswer({
+			authedUser,
+			qid,
+			answer
+		}).then((question)=>dispatch(voteQuestionAction(question))).then(()=>dispatch(hideLoading()))
+	}
+}
+
+////////////////////////////////////////////
