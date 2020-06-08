@@ -17,8 +17,6 @@ class QuestionList extends Component{
 		tab: NOT_VOTED  //will toggle between being on the not vote or voted tab
 	}
 	
-
-
 	render(){
 			const {value} = NOT_VOTED
 			const handleChange = (val) => {
@@ -26,11 +24,8 @@ class QuestionList extends Component{
 				this.setState({tab:val})
 			}
 
-
 		return(
 			<div className='question-list-container'>
-
-
 
 
 				<div className='question-tab'>	
@@ -72,11 +67,11 @@ function mapStateToProps({questions,authedUser}){
 
 
 	const _votedIds =Object.keys(questions).filter(q=>((questions[q].optionOne.votes.includes(authedUser)
-	 || questions[q].optionTwo.votes.includes(authedUser))&& questions[q].author!==authedUser )       )
+	 || questions[q].optionTwo.votes.includes(authedUser)) )       )
 
 	const _notVotedIds =Object.keys(questions).filter(q=> ( !questions[q].optionOne.votes.includes(authedUser) 
 		&& !questions[q].optionTwo.votes.includes(authedUser) 
-		&& questions[q].author!==authedUser )
+		)
 	)      
 
 	return{

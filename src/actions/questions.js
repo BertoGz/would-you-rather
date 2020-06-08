@@ -13,12 +13,11 @@ export function receiveQuestionsAction(questions){
 }
 
 ///////////////////////////////////////////////
-
-function voteQuestionAction({qid,authedUser,answer}){
+function voteQuestionAction(authedUser,qid,answer){
 	return{
 		type: VOTE_QUESTION,
-		qid,
 		authedUser,
+		qid,
 		answer
 	}
 }
@@ -33,7 +32,7 @@ export function handleVoteQuestionAction(vote){
 			authedUser,
 			qid,
 			answer
-		}).then((question)=>dispatch(voteQuestionAction(question))).then(()=>dispatch(hideLoading()))
+		}).then((question)=>dispatch(voteQuestionAction(authedUser,qid,answer))).then(()=>dispatch(hideLoading()))
 	}
 }
 

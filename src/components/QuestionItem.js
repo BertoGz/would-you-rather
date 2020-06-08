@@ -35,7 +35,7 @@ class QuestionItem extends Component{
 					    	<QuestionPoll questionText={question.optionOne.text}/>
 					     </Route>
 					    <Route exact path='/poll'>
-					    	<QuestionPollUnanswered question={question}/>
+					    	<QuestionPollUnanswered question={question} />
 					     </Route>
 				    </Router>
 

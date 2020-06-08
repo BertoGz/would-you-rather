@@ -17,13 +17,17 @@ class QuestionPollUnanswered extends Component{
     this.setState({value: event.target.value});
   }
 
+
+
+
+
   handleSubmit(event) {
     event.preventDefault();
 
     const {dispatch} = this.props
-    
+
     let myVote = {
-      authedUser: this.authedUser, 
+      authedUser: this.props.authedUser, 
       qid: this.props.question.id, 
       answer: "optionOne"
     }
@@ -32,9 +36,10 @@ class QuestionPollUnanswered extends Component{
 
   }
 
+
+
+
   render(){
-
-
 
 
 		return(
