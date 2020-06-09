@@ -5,7 +5,7 @@ import {formatQuestion} from '../utils/helpers'
 
 import QuestionPoll from './QuestionPoll'
 import QuestionPollUnanswered from './QuestionPollUnanswered'
-
+import QuestionPollResult from './QuestionPollResult'
 
 
 class QuestionItem extends Component{
@@ -37,6 +37,9 @@ class QuestionItem extends Component{
 					    <Route exact path='/poll'>
 					    	<QuestionPollUnanswered question={question} />
 					     </Route>
+					     <Route exact path='/result'>
+					    	<QuestionPollResult id={this.props.id}/>
+					     </Route>
 				    </Router>
 
 				</div>
@@ -52,7 +55,7 @@ function mapStateToProps({authedUser,users,questions,page}, {id}){ //id is a pro
 
 	return{
 		authedUser,
-		question: question? formatQuestion(question,users[question.author],authedUser) : null 
+		question: question ? formatQuestion(question,users[question.author],authedUser) : null 
 		// if question is a thing return a formated question, otherwise null
 
 	}

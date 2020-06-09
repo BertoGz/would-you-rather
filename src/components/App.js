@@ -24,6 +24,7 @@ class App extends Component{
               <div> 
                 <Route path='/' exact component={QuestionList}/>
                 <Route path='/poll' exact component={QuestionList}/>
+                <Route path='/result' exact component={QuestionList}/>
               </div> 
             }
           </div>
