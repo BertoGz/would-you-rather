@@ -8,28 +8,45 @@ class QuestionPollResult extends Component{
 	render(){
 		const {users,authedUser} = this.props;
 
-		const votesOptionOne = this.props.question.optionOne.votes.length 
-		const votesOptionTwo = this.props.question.optionTwo.votes.length
-		const totalVotes = votesOptionOne + votesOptionTwo
+		// grabs the votes of option one and two
+		const optionOneVotes = this.props.question.optionOne.votes
+		const optionTwoVotes = this.props.question.optionTwo.votes
+		
+		//total amount of people who voted
+		const allVotesLength = optionOneVotes.length+optionTwoVotes.length;
+		
 
-		const optionOneResult = Math.round( votesOptionOne / totalVotes * 100)
-		const optionTwoResult = Math.round( votesOptionTwo / totalVotes * 100)
+		// returns the percent of votes.
+		const optionOneResult = Math.round( optionOneVotes.length / allVotesLength  * 100)
+		const optionTwoResult = Math.round( optionTwoVotes.length / allVotesLength  * 100)
 
-		const myVote = 0
+		// if my vote is found in option A , choose item A, else look through B, if its found choose B
+		//else choose None
+		const myVote = ( optionOneVotes.filter(vote=>vote===authedUser).length===1) ? 1 : 
+		( optionTwoVotes.filter(vote=>vote===authedUser).length===1) ? 2 : 0
+
+
+
+
+
 		return(
 			<div className='container2'>
 				<h2>Results:</h2>
-				<div className='poll-result'>
 
-					<p>would you rather {this.props.question.optionOne.text}</p>
+					{myVote===1 && <p className='your-vote'>YOUR VOTE</p> }
+				<div className={`${myVote===1?'poll-result colored':'poll-result'}`}>
+
+					<p className='fit-text'>would you rather {this.props.question.optionOne.text}</p>
 					<ProgressBar now={optionOneResult} label={`${optionOneResult}%`} />
-					<p className='center'>{votesOptionOne} out of {totalVotes}</p>
+					<p className='poll-result-votes'>{optionOneVotes.length} out of {allVotesLength}</p>
 				</div>
 
-				<div className='poll-result'>
-					<p>would you rather {this.props.question.optionTwo.text}</p>
+						{myVote===2 && <p className='your-vote' >YOUR VOTE</p> }
+				<div className={`${myVote===2?'poll-result colored':'poll-result'}`}>
+
+					<p className='fit-text'>would you rather {this.props.question.optionTwo.text}</p>
 					<ProgressBar now={optionTwoResult} label={`${optionTwoResult}%`} />
-					<p className='center'> {votesOptionTwo} out of {totalVotes}</p>
+					<p className='poll-result-votes'> {optionTwoVotes.length} out of {allVotesLength}</p>
 				</div>
 			</div>
 		)
