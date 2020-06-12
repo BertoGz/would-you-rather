@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import QuestionItem from '../QuestionItem'
 import {Link, withRouter} from 'react-router-dom'
 
-
+import {setTabAction} from '../../actions/tab'
 
 
 class HomePage extends Component{
@@ -13,14 +13,16 @@ class HomePage extends Component{
     
 
     state = {
-		tab: "unanswered"  //will toggle between being on the not vote or voted tab
+		tab: this.props.tab  //will toggle between being on the not vote or voted tab
 	}
 	
-	render(){
+	render(){	
 			
 			const handleChange = (val) => {
 				console.log(val)
-				this.setState({tab:val})
+				//this.setState({tab:val})
+   				const {dispatch} = this.props
+				dispatch(setTabAction(val))
 			}
 
 
@@ -34,7 +36,7 @@ class HomePage extends Component{
 						{/*shows two tabs, one for unanswered questions and one for answered*/}
 						<Tabs
 					      id="controlled-tab-example"
-					      activeKey={this.tab}
+					      activeKey={this.props.tab}
 					      onSelect={(k) => handleChange(k)}
 					      transition={false}
 					    >
@@ -72,7 +74,7 @@ class HomePage extends Component{
 	}
 }
 
-function mapStateToProps({questions,authedUser}){
+function mapStateToProps({questions,authedUser,tab}){
 
 
 
@@ -86,6 +88,7 @@ function mapStateToProps({questions,authedUser}){
 	)      
 
 	return{
+		tab,
 		votedIds: _votedIds.sort((a,b)=>questions[b].timestamp-questions[a].timestamp),
 		notVotedIds: _notVotedIds.sort((a,b)=>questions[b].timestamp-questions[a].timestamp)
 	}

@@ -5,6 +5,7 @@ import {receiveUsersAction} from '../actions/users'
 import {receiveQuestionsAction} from '../actions/questions'
 import {setAuthedUserAction} from '../actions/authedUser'
 
+import {setTabAction} from '../actions/tab'
 
 import {showLoading, hideLoading} from 'react-redux-loading' //we inported this after creating a loading 
 
@@ -17,6 +18,7 @@ export function handleInitialData (){
 			dispatch(receiveUsersAction(users))
 			dispatch(receiveQuestionsAction(questions))
 			dispatch(setAuthedUserAction(AUTHED_ID))
+			dispatch(setTabAction('Unanswered'))
 			dispatch(hideLoading())
 		})
 	}

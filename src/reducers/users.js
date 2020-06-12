@@ -1,5 +1,5 @@
 import  {RECEIVE_USERS} from '../actions/users'
-
+import {VOTE_QUESTION} from '../actions/questions'
 export default function users(state={},action){
 	switch(action.type){
 		case RECEIVE_USERS:
@@ -7,6 +7,21 @@ export default function users(state={},action){
 			...state,
 			...action.users
 			}
+
+		case VOTE_QUESTION:
+
+		return {
+			...state,
+			[action.authedUser]:{
+				...state[action.authedUser],
+				answers:{
+					...state[action.authedUser].answers,
+					[action.qid]: action.answer
+
+				}
+			}
+
+		}
 
 		default: return state
 	}

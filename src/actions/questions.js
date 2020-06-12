@@ -5,6 +5,7 @@ export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const VOTE_QUESTION = 'VOTE_QUESTION'
 export const ADD_QUESTION = 'ADD_QUESTION'
 
+
 export function receiveQuestionsAction(questions){
 	return{
 		type: RECEIVE_QUESTIONS,
@@ -27,7 +28,7 @@ export function handleVoteQuestionAction(vote){
 		const {authedUser,qid,answer} = vote
 
 		dispatch(showLoading())
-
+		
 		return saveQuestionAnswer({
 			authedUser,
 			qid,
