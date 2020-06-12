@@ -3,7 +3,7 @@ import Navbar from 'react-bootstrap/NavBar'
 import Nav from 'react-bootstrap/Nav'
 import { NavLink } from 'react-router-dom'
 
-class Navigation extends Component{
+class NavigationBar extends Component{
 
 
 	render(){
@@ -33,4 +33,4 @@ class Navigation extends Component{
 
 }
 
-export default Navigation
+export default NavigationBar

@@ -6,9 +6,9 @@ import {connect} from 'react-redux'
 import {handleInitialData} from '../actions/shared'
  
  import QuestionItem from './QuestionItem'
-import AnswerQuestionPage from './AnswerQuestionPage'
-import HomePage from './HomePage'
-import Navigation from './Navigation'
+import AnswerQuestionPage from './pages/AnswerQuestionPage'
+import HomePage from './pages/HomePage'
+import NavigationBar from './NavigationBar'
 
 
 
@@ -25,14 +25,13 @@ class App extends Component{
       <Fragment>
       <LoadingBar/>
           <div className='container'>
-            <Navigation/>
+            <NavigationBar/>
               {
                 this.props.loading === true 
                 ? null : 
                 <div> 
                   <Route path='/' exact component={HomePage}/>
                   <Route path='/poll/:id'  component={AnswerQuestionPage}/>
-                  <Route path='/result/:id'   component={HomePage}/>
                 </div> 
               }
           </div>

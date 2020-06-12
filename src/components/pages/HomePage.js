@@ -2,7 +2,7 @@ import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import QuestionItem from './QuestionItem'
+import QuestionItem from '../QuestionItem'
 import {Link, withRouter} from 'react-router-dom'
 
 

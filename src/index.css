@@ -216,4 +216,31 @@ justify-content: center;
 }
 
 
+.nav{
+  border: 0px solid black;
+}
+.nav-item.nav-link.active{
+  background-color: rgb(81, 136, 136);
+  border: 0px;
+}
+.nav-item.nav-link.active:hover{
+  background-color: rgb(90,140,140);
+  border: 1px solid rgb(81, 136, 136);
+}
+.nav-item.nav-link:hover{
+  background-color: rgb(90,140,140);
+  border: 1px solid rgb(81, 136, 136);
+}
+.nav.nav-tabs{
+  display: flex;
+  flex-direction: row;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.nav.nav-tabs a{
+  color:rgb(60,60,60);
+  font-weight: bold;
+  width: 290px
+}
+
 @import '~bootstrap/dist/css/bootstrap.min.css';

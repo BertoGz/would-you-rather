@@ -2,7 +2,7 @@ import React,{Component} from 'react'
 import {connect} from 'react-redux'
 import ProgressBar from 'react-bootstrap/ProgressBar'
 
-class QuestionPollResult extends Component{
+class PollResult extends Component{
 
 
 	render(){
@@ -61,5 +61,5 @@ function mapStateToProps({questions,users,authedUser},{id}){
 		authedUser,
 	}
 }
-export default connect(mapStateToProps)(QuestionPollResult)
+export default connect(mapStateToProps)(PollResult)
 

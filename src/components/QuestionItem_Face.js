@@ -4,14 +4,14 @@ import {Link, withRouter} from 'react-router-dom'
 import { Redirect } from 'react-router-dom'
 
 
-class QuestionViewPoll extends Component{
+class QuestionItem_Face extends Component{
 
 state={
 	go:false
 }
 	toVotePage = (e,id)=>{
 		e.preventDefault();
-		this.props.history.push(`/poll/${this.props.id} `)
+		this.props.history.push(`/poll/${this.props.id}`)
 		this.setState({go:true})
 	}
 	render(){
@@ -32,4 +32,4 @@ state={
 
 
 
-export default withRouter(QuestionViewPoll)
+export default withRouter(QuestionItem_Face)
