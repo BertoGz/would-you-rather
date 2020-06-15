@@ -8,7 +8,7 @@ class LeaderboardPage extends Component{
 			<div>
 				<ul>
 				{
-					Object.values(this.props.users).map((user)=>
+					this.props.userss.map((user)=>
 						(<li>
 							<LeaderboardItem user={user}/>
 						</li>
@@ -24,8 +24,14 @@ class LeaderboardPage extends Component{
 
 function mapStateToProps({users}){
 	console.log(users)
+	const u = Object.values(users)
+
+	u.sort((a,b)=>{
+		return (Object.values(a.answers).length+a.questions.length >
+		 Object.values(b.answers).length+b.questions.length  ) ? -1 : 1
+	})
 	return{
-		users,
+		userss: u//Object.values(users).map( (user)=>(user=>score)>(highest=>score) ? highest = user,  :    )
 	}
 }
 

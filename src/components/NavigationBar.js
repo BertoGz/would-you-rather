@@ -3,7 +3,9 @@ import Navbar from 'react-bootstrap/NavBar'
 import Nav from 'react-bootstrap/Nav'
 import { NavLink } from 'react-router-dom'
 import {withRouter} from 'react-router-dom'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 import {connect} from 'react-redux'
+
 class NavigationBar extends Component{
 
 	toHome=()=>{
@@ -12,11 +14,10 @@ class NavigationBar extends Component{
 
 	toAdd=()=>{
 		this.props.history.push(`/add`)
-		this.props.dispatch()
 	}
 
 	toLeaderboard=()=>{
-		this.props.history.push(`/Leaderboard`)
+		this.props.history.push(`/leaderboard`)
 	}
 
 	render(){
@@ -26,12 +27,27 @@ class NavigationBar extends Component{
 				<div className='navigation-bar-nav'>
 					<div className='navigation-bar-nav-links'></div>
 					<div className='navigation-bar-nav-links'>
-					<a onClick={this.toHome}>Home</a>
-					<a  onClick={this.toAdd}>New Question</a>
-					<a onClick={this.toLeaderboard}>Leaderboard</a>
+					
+					<Route exact path='/'>
+						<a onClick={this.toHome} style={{fontWeight: "bold", color:"blue"}}>Home</a>	
+						<a  onClick={this.toAdd}>New Question</a>
+						<a onClick={this.toLeaderboard}>Leaderboard</a>
+					</Route>
+
+					<Route exact path='/add'>
+						<a onClick={this.toHome} >Home</a>	
+						<a  onClick={this.toAdd} style={{fontWeight: "bold", color:"blue"}}>New Question</a>
+						<a onClick={this.toLeaderboard}>Leaderboard</a>
+					</Route>
+					<Route exact path='/leaderboard'>
+						<a onClick={this.toHome} >Home</a>	
+						<a  onClick={this.toAdd} >New Question</a>
+						<a onClick={this.toLeaderboard} style={{fontWeight: "bold", color:"blue"}}>Leaderboard</a>
+					</Route>
+
 					</div>
 					<div className='navigation-bar-nav-links'>
-					<a>Hello, {this.props.authedUser}</a>
+					<h5 style={{fontWeight: "bold", verticalAlign:"middle",margin:"10px "}}>Hello, {this.props.authedUser}</h5>
 					<a>Logout</a>
 					</div>
 				</div>
