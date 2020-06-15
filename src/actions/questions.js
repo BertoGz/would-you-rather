@@ -1,4 +1,5 @@
 import {saveQuestionAnswer} from '../utils/api'
+import {saveQuestion} from '../utils/api'
 import {showLoading, hideLoading} from 'react-redux-loading'
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
@@ -38,3 +39,26 @@ export function handleVoteQuestionAction(vote){
 }
 
 ////////////////////////////////////////////
+
+function addQuestionAction(question){
+	return{
+		type: ADD_QUESTION,
+		question
+	}
+}
+export function handleAddQuestionAction(optionOneText,optionTwoText,author){
+	
+			
+
+	return(dispatch)=>{
+		
+		dispatch(showLoading())
+
+		return saveQuestion({
+			optionOneText,
+			optionTwoText,
+			author
+		}
+		).then((question)=>dispatch(addQuestionAction(question)   )) .then(()=>dispatch(hideLoading()))
+	}
+}

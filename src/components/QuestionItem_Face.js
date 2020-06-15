@@ -7,12 +7,11 @@ import { Redirect } from 'react-router-dom'
 class QuestionItem_Face extends Component{
 
 state={
-	go:false
+
 }
-	toVotePage = (e,id)=>{
+	toVotePage = (e)=>{
 		e.preventDefault();
 		this.props.history.push(`/poll/${this.props.id}`)
-		this.setState({go:true})
 	}
 	render(){
 		  

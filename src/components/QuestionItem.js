@@ -32,13 +32,8 @@ class QuestionItem extends Component{
 							{name} asks:
 						</Route>
 						<Route path='/poll/:id'>
-							{name} asks:
+							Asked by {name}: 
 						</Route>
-
-						<Route  path='/result/:id'>
-							asked by {name}: 
-						</Route>
-
 				</div>
 
 

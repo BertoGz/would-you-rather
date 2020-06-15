@@ -264,4 +264,56 @@ justify-content: center;
   border-width: 2px;
 }
 
+.new-question-lower{
+  padding: 10px 20px 0px 20px;
+  font-weight: bold;
+    background-color: rgb(223, 235, 235);
+}
+.new-question-lower h6,h3{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+
+.navbar-collapse a{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+
+}
+.navigation-bar{
+  min-width: 677px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+    background-color: rgb(223, 235, 235);
+    border-bottom: 4px solid rgb(131, 186, 186);
+
+}
+.navigation-bar-nav{
+  display: flex;
+  flex-grow: 1;
+  margin: 10px;
+  justify-content: space-between;
+
+  vertical-align: middle;
+}
+.navigation-bar-nav a{
+  font-weight: bold;
+  margin: 10px;
+  vertical-align: middle;
+}
+.navigation-bar-nav a:hover{
+  color: red;
+  cursor:pointer;
+}
+
+.navigation-bar-nav-links{
+  display: flex;
+  flex-grow: 1;
+  
+}
+
 @import '~bootstrap/dist/css/bootstrap.min.css';

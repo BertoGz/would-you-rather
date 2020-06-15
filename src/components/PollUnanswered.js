@@ -10,7 +10,7 @@ class PollUnanswered extends Component{
 	
 	 constructor(props) {
 		super(props);
-		this.state = {value: "1"};
+		this.state = {value: ""};
 
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,7 +22,9 @@ class PollUnanswered extends Component{
 
 	handleSubmit(event) {
 	    event.preventDefault();
-
+	    if (this.state.value===""){
+	    	return alert('Please choose an option')
+	    }
 	    const {dispatch} = this.props
 
 	    let myVote = {

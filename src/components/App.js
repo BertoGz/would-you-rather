@@ -5,10 +5,14 @@ import LoadingBar from 'react-redux-loading'
 import {connect} from 'react-redux'
 import {handleInitialData} from '../actions/shared'
  
- import QuestionItem from './QuestionItem'
-import AnswerQuestionPage from './pages/AnswerQuestionPage'
-import HomePage from './pages/HomePage'
+import QuestionItem from './QuestionItem'
 import NavigationBar from './NavigationBar'
+
+import HomePage from './pages/HomePage'
+import AnswerQuestionPage from './pages/AnswerQuestionPage'
+import LeaderboardPage from './pages/LeaderboardPage'
+import NewQuestionPage from './pages/NewQuestionPage'
+
 
 
 
@@ -24,7 +28,7 @@ class App extends Component{
       <Router>
       <Fragment>
       <LoadingBar/>
-          <div className='container'>
+          <div>
             <NavigationBar/>
               {
                 this.props.loading === true 
@@ -32,6 +36,8 @@ class App extends Component{
                 <div> 
                   <Route path='/' exact component={HomePage}/>
                   <Route path='/poll/:id'  component={AnswerQuestionPage}/>
+                  <Route path='/add' component={NewQuestionPage}/>
+                  <Route path='/leaderboard' component={LeaderboardPage} />
                 </div> 
               }
           </div>
