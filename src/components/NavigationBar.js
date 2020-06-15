@@ -20,6 +20,10 @@ class NavigationBar extends Component{
 		this.props.history.push(`/leaderboard`)
 	}
 
+	toLogin=()=>{
+		this.props.history.push(`/login`)
+	}
+
 	render(){
 		return(
 
@@ -44,12 +48,29 @@ class NavigationBar extends Component{
 						<a  onClick={this.toAdd} >New Question</a>
 						<a onClick={this.toLeaderboard} style={{fontWeight: "bold", color:"blue"}}>Leaderboard</a>
 					</Route>
+					<Route exact path='/login'>
+						<a onClick={this.toHome} >Home</a>	
+						<a  onClick={this.toAdd} >New Question</a>
+						<a onClick={this.toLeaderboard} >Leaderboard</a>
+					</Route>
+
 
 					</div>
-					<div className='navigation-bar-nav-links'>
-					<h5 style={{fontWeight: "bold", verticalAlign:"middle",margin:"10px "}}>Hello, {this.props.authedUser}</h5>
-					<a>Logout</a>
-					</div>
+					{ this.props.authedUser===null &&
+						<div className='navigation-bar-nav-links'>
+							
+					
+						<a onClick={this.toLogin} >Login</a>
+						</div>
+					}
+
+					{ this.props.authedUser!==null &&
+						<div className='navigation-bar-nav-links'>
+							
+						<h5 style={{fontWeight: "bold", verticalAlign:"middle",margin:"10px "}}>Hello, {this.props.authedUser}</h5>
+						<a onClick={this.toLogin} >Logout</a>
+						</div>
+					}
 				</div>
 			</div>
 

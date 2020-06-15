@@ -12,7 +12,7 @@ import HomePage from './pages/HomePage'
 import AnswerQuestionPage from './pages/AnswerQuestionPage'
 import LeaderboardPage from './pages/LeaderboardPage'
 import NewQuestionPage from './pages/NewQuestionPage'
-
+import LoginPage from './pages/LoginPage'
 
 
 
@@ -28,8 +28,8 @@ class App extends Component{
       <Router>
       <Fragment>
       <LoadingBar/>
+      <NavigationBar/>
           <div>
-            <NavigationBar/>
               {
                 this.props.loading === true 
                 ? null : 
@@ -37,7 +37,8 @@ class App extends Component{
                   <Route path='/' exact component={HomePage}/>
                   <Route path='/poll/:id'  component={AnswerQuestionPage}/>
                   <Route path='/add' component={NewQuestionPage}/>
-                  <Route path='/leaderboard' component={LeaderboardPage} />
+                  <Route path='/leaderboard' exact component={LeaderboardPage} />
+                  <Route path='/login' exact component={LoginPage}/>
                 </div> 
               }
           </div>
@@ -47,9 +48,9 @@ class App extends Component{
   }
 }
 
-function mapStateToProps({authedUser}){
+function mapStateToProps({autherUser}){
   return{
-    loading: authedUser === null
+    loggedIn: autherUser === 1  
   }
 }
 

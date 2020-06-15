@@ -9,7 +9,7 @@ import {setTabAction} from '../actions/tab'
 
 import {showLoading, hideLoading} from 'react-redux-loading' //we inported this after creating a loading 
 
-const AUTHED_ID = 'tylermcginnis'
+
 
 export function handleInitialData (){
 	return(dispatch)=>{
@@ -17,7 +17,6 @@ export function handleInitialData (){
 		return getInitialData().then(({users,questions})=>{
 			dispatch(receiveUsersAction(users))
 			dispatch(receiveQuestionsAction(questions))
-			dispatch(setAuthedUserAction(AUTHED_ID))
 			dispatch(setTabAction('Unanswered'))
 			dispatch(hideLoading())
 		})

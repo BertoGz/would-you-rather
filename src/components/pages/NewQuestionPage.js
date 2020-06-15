@@ -49,35 +49,39 @@ class NewQuestionPage extends Component{
 
 	render(){
 		return(
-			<div className='question-item-container'>
+			<div>
+				{ this.props.loggedOff ? <h3 className='login-alert'>Please Login First</h3> :
+					<div className='question-item-container'>
 
-				<div className='question-item-upper'>
-					<h3>Create New Question:</h3>
-				</div>
+						<div className='question-item-upper'>
+							<h3>Create New Question:</h3>
+						</div>
 
-				<div className='new-question-lower'> 
-					<p>Complete the question</p>
-					<h3>Would you rather...</h3>
-					<br/>
+						<div className='new-question-lower'> 
+							<p>Complete the question</p>
+							<h3>Would you rather...</h3>
+							<br/>
 
-					<Form onSubmit={this.handleSubmit}> 
-					  <Form.Group controlId="formOne" >
-					    <Form.Control type="text" placeholder="Enter Option One Text Here" 
-					    value={this.state.optionOne}
-                        onChange={this.handleChangeOptionOne}/>
-					  </Form.Group>
-					  	<h6>Or</h6>
-					  <Form.Group controlId="formTwo">
-					    <Form.Control type="text" placeholder="Enter Option Two Text Here" 
-					   	value={this.state.optionTwo}
-                        onChange={this.handleChangeOptionTwo}/>
-             
-					  </Form.Group>
-					  <Button className="submitButton" variant="primary" type="submit">
-					    Submit
-					  </Button>
-					</Form>
-				</div>
+							<Form onSubmit={this.handleSubmit}> 
+							  <Form.Group controlId="formOne" >
+							    <Form.Control type="text" placeholder="Enter Option One Text Here" 
+							    value={this.state.optionOne}
+		                        onChange={this.handleChangeOptionOne}/>
+							  </Form.Group>
+							  	<h6>Or</h6>
+							  <Form.Group controlId="formTwo">
+							    <Form.Control type="text" placeholder="Enter Option Two Text Here" 
+							   	value={this.state.optionTwo}
+		                        onChange={this.handleChangeOptionTwo}/>
+		             
+							  </Form.Group>
+							  <button className='buttonNormal' variant="primary" type="submit">
+							    Submit
+							  </button>
+							</Form>
+						</div>
+					</div>
+				}
 			</div>
 		)
 	}
@@ -86,6 +90,7 @@ class NewQuestionPage extends Component{
 function mapStateToProps({authedUser}){
 	return{
 		authedUser,
+		loggedOff: authedUser === null,
 	}
 }
 export default withRouter(connect(mapStateToProps)(NewQuestionPage))

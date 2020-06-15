@@ -21,7 +21,7 @@ state={
 				<h3>Would you rather</h3> 
 					<hr/> 
 				<h4>...{this.props.questionText}...</h4>
-				<button onClick={this.toVotePage}>Poll</button>
+				<button className='buttonNormal' onClick={this.toVotePage}>Poll</button>
 			</div>
 		)
 	}

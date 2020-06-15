@@ -19,14 +19,16 @@ class AnswerQuestionPage extends Component{
 	}
 }
 
-function mapStateToProps({questions},props){
+function mapStateToProps({authedUser,questions},props){
 	const {id} = props.match.params
 	const question = questions[id]
 	
 	return{
+		loading: authedUser === null,
 		id: props.match.params ? id : null
 	}
 
 }
+
 
 export default connect(mapStateToProps)(AnswerQuestionPage)

@@ -1,28 +1,32 @@
 import React,{Component} from 'react'
 import {connect} from 'react-redux'
 import LeaderboardItem from '../LeaderboardItem'
+import ErrorPage from './ErrorPage'
 class LeaderboardPage extends Component{
 
 	render(){
 		return(
 			<div>
+			{
+				this.props.loggedOff ? <h3 className='login-alert'>Please Login First</h3> :
 				<ul>
 				{
 					this.props.userss.map((user)=>
-						(<li>
-							<LeaderboardItem user={user}/>
+						(<li key={user.id}>
+							<LeaderboardItem key={user.id} user={user}/>
 						</li>
 						)
 					)
 				}
 				</ul>
+			}
 			</div>
 		)
 	}
 }
 
 
-function mapStateToProps({users}){
+function mapStateToProps({authedUser,users}){
 	console.log(users)
 	const u = Object.values(users)
 
@@ -31,6 +35,7 @@ function mapStateToProps({users}){
 		 Object.values(b.answers).length+b.questions.length  ) ? -1 : 1
 	})
 	return{
+		loggedOff: authedUser === null,
 		userss: u//Object.values(users).map( (user)=>(user=>score)>(highest=>score) ? highest = user,  :    )
 	}
 }

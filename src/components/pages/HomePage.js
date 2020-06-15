@@ -7,7 +7,7 @@ import {Link, withRouter} from 'react-router-dom'
 
 import {setTabAction} from '../../actions/tab'
 
-
+import ErrorPage from './ErrorPage'
 class HomePage extends Component{
 
     
@@ -30,45 +30,54 @@ class HomePage extends Component{
 
 
 			<div>
-				<div className='question-list-container'>
-					<div className='question-tab'>	
+				{ this.props.loggedOff ? <h3 className='login-alert'>Please Login First</h3> :
+					<div className='question-list-container'>
+						<div className='question-tab'>	
 
-						{/*shows two tabs, one for unanswered questions and one for answered*/}
-						<Tabs
-					      id="controlled-tab-example"
-					      activeKey={this.props.tab}
-					      onSelect={(k) => handleChange(k)}
-					      transition={false}
-					    >
-					      <Tab eventKey="Unanswered" title="Unanswered">
-						    
-							<ul className='a'>
-								{this.props.notVotedIds.map((id)=>(
-									<li key={id}>
-									
-										<QuestionItem id={id}/>
-									</li>
-								))}
-							</ul>				    
+							{/*shows two tabs, one for unanswered questions and one for answered*/}
+							<Tabs
+						      id="controlled-tab-example"
+						      activeKey={this.props.tab}
+						      onSelect={(k) => handleChange(k)}
+						      transition={false}
+						    >
+						      <Tab eventKey="Unanswered" title="Unanswered">
+							    
+								<ul className='a'>
 
-					      </Tab>
-					      
-					      <Tab eventKey="Answered" title="Answered">
-							
-							<ul className='a'>
-								{this.props.votedIds.map((id)=>(
-									<li key={id}>
+									{this.props.notVotedIds.map((id)=>(
+										<li key={id}>
 										
-										<QuestionItem id={id}/>
-									</li>
-								))}
-							</ul>	
-					      </Tab>
-					    </Tabs>					
+											<QuestionItem id={id}/>
+										</li>
+									))}
+
+									{	//show a message implying user has no questions to answer
+										this.props.notVotedIds<=0 &&
+										<h3 style={{paddingTop:'100px',paddingBottom:'100px'}}>You are caught up</h3>
+									}
+								</ul>				    
+
+						      </Tab>
+						      
+						      <Tab eventKey="Answered" title="Answered">
+								
+								<ul className='a'>
+									{this.props.votedIds.map((id)=>(
+										<li key={id}>
+											
+											<QuestionItem id={id}/>
+										</li>
+									))}
+								</ul>	
+						      </Tab>
+						    </Tabs>					
+						</div>
+
+
 					</div>
-
-
-				</div>
+				
+				}
 			</div>
 		)
 	}
@@ -88,6 +97,7 @@ function mapStateToProps({questions,authedUser,tab}){
 	)      
 
 	return{
+		loggedOff: authedUser === null,
 		tab,
 		votedIds: _votedIds.sort((a,b)=>questions[b].timestamp-questions[a].timestamp),
 		notVotedIds: _notVotedIds.sort((a,b)=>questions[b].timestamp-questions[a].timestamp)

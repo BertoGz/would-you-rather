@@ -1,7 +1,7 @@
 *{
     cursor:default;
 }
-button {
+.buttonNormal {
   margin: 35px auto;
   padding: 10px;
   border: 2px solid rgb(90,140,140);
@@ -13,7 +13,7 @@ button {
   position: relative;
   transform: translateX(80px);
 }
-button:hover{
+.buttonNormal:hover{
     background: rgb(174, 203, 203);
 }
 
@@ -28,12 +28,12 @@ margin: 0 auto;
 
 
 
-.btn:hover {
+.buttonNormal :hover {
   border-color: rgba(0,0,0,.5);
   text-decoration: none;
 }
 
-.btn:focus {
+.buttonNormal :focus {
   outline: 0;
   font-weight: 700;
   border-width: 2px;
@@ -352,4 +352,24 @@ justify-content: center;
   flex-direction: column;
   justify-content: center;
 }
+
+
+#dropdown-basic {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 580px;
+  margin: 0 auto;
+}
+.dropdown-menu,.show{
+    width: 580px;
+}
+
+.login-alert{
+  padding-top: 20px
+}
+
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
 @import '~bootstrap/dist/css/bootstrap.min.css';

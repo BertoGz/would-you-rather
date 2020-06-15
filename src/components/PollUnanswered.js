@@ -67,7 +67,7 @@ class PollUnanswered extends Component{
 		                  </Col>
 
 
-		                    <button type="submit">Submit</button> 
+		                    <button className='buttonNormal' type="submit">Submit</button> 
 		                </Form.Group>
 		              </fieldset>
 
