@@ -2,10 +2,13 @@ import React,{Component} from 'react'
 import Form from 'react-bootstrap/Form'
 import Dropdown from 'react-bootstrap/Dropdown'
 import {connect} from 'react-redux'
-import {handleSetAuthedUser} from '../../actions/authedUser'
-class LoginPage extends Component{
+import {handleSetAuthedUser} from '../actions/authedUser'
+class Login extends Component{
 	state={
-		click:false
+		click:false,
+		userText:'Select User',
+		user: ''
+
 	}
 
 
@@ -14,11 +17,20 @@ class LoginPage extends Component{
 
 	render(){
 
+		const onChange=(val)=>{
+					this.setState({user:val,userText:val})
+		
+		}
 		const handleLogin=(val)=>{
-			
-			this.props.dispatch(handleSetAuthedUser(val))
-			//onsole.log("asdasd",val)
-			//console.log("Asdasd",this.props.authedUser)
+			if (val!=='')
+			{
+				this.setState({user:val})
+				this.props.dispatch(handleSetAuthedUser(val))
+			}
+			else
+			{
+				alert('please choose an account')
+			}
 		}
 
 
@@ -32,7 +44,7 @@ class LoginPage extends Component{
 				</div>
 				<Dropdown>
 				  <Dropdown.Toggle variant="light" id="dropdown-basic" >
-				    Select User
+				    {this.state.userText}
 				  </Dropdown.Toggle>
 
 				  <Dropdown.Menu>
@@ -40,10 +52,10 @@ class LoginPage extends Component{
 				  		this.props.accounts.map((user)=>(
 				  			<Dropdown.Item key={user.id}
 				  			style={{height:"40px",display:"flex",flexDirection:"row"}}
-				  			onClick={(func) => handleLogin(user.id)}
+				  			onClick={(func) => onChange(user.id)}
 				  			>
 				  			<img style={{height:"30px"}}src={user.avatarURL} alt={`Avatar of ${user.name}`}
-					className='avatar'/>
+							className='avatar'/>
 				  			{user.name}</Dropdown.Item>
 				  		))
 				  	}
@@ -51,7 +63,7 @@ class LoginPage extends Component{
 				  </Dropdown.Menu>
 				</Dropdown>
 
-				<button className='buttonNormal' > Sign-In</button>
+				<button onClick={(func)=>handleLogin(this.state.user)}className='buttonNormal' > Sign-In</button>
 			</div>
 		)
 	}
@@ -66,4 +78,4 @@ function mapStateToProps({users}){
 	}
 }
 
-export default connect(mapStateToProps)(LoginPage)
+export default connect(mapStateToProps)(Login)

@@ -3,7 +3,7 @@ import React,{Component} from 'react'
 class LeaderboardItem extends Component{
 	render(){
 
-		const {avatarURL,id,name,answers,questions} = this.props.user
+		const {avatarURL,name,answers,questions} = this.props.user
 		return(
 			<div className='leaderboard-item-container'>
 				<div className='leaderboard-lower'> 

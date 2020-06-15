@@ -59,6 +59,6 @@ export function handleAddQuestionAction(optionOneText,optionTwoText,author){
 			optionTwoText,
 			author
 		}
-		).then((question)=>dispatch(addQuestionAction(question)   )) .then(()=>dispatch(hideLoading()))
+		).then((question)=>dispatch(addQuestionAction(question)   )).then(()=>dispatch(hideLoading()))
 	}
 }

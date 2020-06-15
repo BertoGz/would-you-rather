@@ -6,7 +6,7 @@ class PollResult extends Component{
 
 
 	render(){
-		const {users,authedUser} = this.props;
+		const {authedUser} = this.props;
 
 		// grabs the votes of option one and two
 		const optionOneVotes = this.props.question.optionOne.votes

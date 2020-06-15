@@ -5,21 +5,19 @@ import LoadingBar from 'react-redux-loading'
 import {connect} from 'react-redux'
 import {handleInitialData} from '../actions/shared'
  
-import QuestionItem from './QuestionItem'
 import NavigationBar from './NavigationBar'
 
 import HomePage from './pages/HomePage'
 import AnswerQuestionPage from './pages/AnswerQuestionPage'
 import LeaderboardPage from './pages/LeaderboardPage'
 import NewQuestionPage from './pages/NewQuestionPage'
-import LoginPage from './pages/LoginPage'
-
 
 
 class App extends Component{
 
   componentDidMount() {
     this.props.dispatch(handleInitialData())
+
   }
 
 
@@ -31,14 +29,14 @@ class App extends Component{
       <NavigationBar/>
           <div>
               {
-                this.props.loading === true 
-                ? null : 
+                this.props.loading? null :
                 <div> 
+
                   <Route path='/' exact component={HomePage}/>
                   <Route path='/poll/:id'  component={AnswerQuestionPage}/>
                   <Route path='/add' component={NewQuestionPage}/>
                   <Route path='/leaderboard' exact component={LeaderboardPage} />
-                  <Route path='/login' exact component={LoginPage}/>
+
                 </div> 
               }
           </div>
@@ -48,9 +46,9 @@ class App extends Component{
   }
 }
 
-function mapStateToProps({autherUser}){
+function mapStateToProps({users,loadingBar}){
   return{
-    loggedIn: autherUser === 1  
+    loading: users === null
   }
 }
 

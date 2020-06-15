@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom'
 import {withRouter} from 'react-router-dom'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import {connect} from 'react-redux'
+import {handleSetAuthedUser} from '../actions/authedUser'
 
 class NavigationBar extends Component{
 
@@ -21,9 +22,13 @@ class NavigationBar extends Component{
 	}
 
 	toLogin=()=>{
-		this.props.history.push(`/login`)
+		this.props.history.push(`/`)
 	}
 
+	logOut=()=>{
+		this.props.dispatch(handleSetAuthedUser(null))
+		this.props.history.push(`/`)
+	}
 	render(){
 		return(
 
@@ -48,7 +53,7 @@ class NavigationBar extends Component{
 						<a  onClick={this.toAdd} >New Question</a>
 						<a onClick={this.toLeaderboard} style={{fontWeight: "bold", color:"blue"}}>Leaderboard</a>
 					</Route>
-					<Route exact path='/login'>
+					<Route path='/poll/'>
 						<a onClick={this.toHome} >Home</a>	
 						<a  onClick={this.toAdd} >New Question</a>
 						<a onClick={this.toLeaderboard} >Leaderboard</a>
@@ -68,7 +73,7 @@ class NavigationBar extends Component{
 						<div className='navigation-bar-nav-links'>
 							
 						<h5 style={{fontWeight: "bold", verticalAlign:"middle",margin:"10px "}}>Hello, {this.props.authedUser}</h5>
-						<a onClick={this.toLogin} >Logout</a>
+						<a onClick={this.logOut} >Logout</a>
 						</div>
 					}
 				</div>
