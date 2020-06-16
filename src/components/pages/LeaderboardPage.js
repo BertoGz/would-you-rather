@@ -1,14 +1,14 @@
 import React,{Component} from 'react'
 import {connect} from 'react-redux'
 import LeaderboardItem from '../LeaderboardItem'
-import ErrorPage from './ErrorPage'
+import Login from '../Login'
 class LeaderboardPage extends Component{
 
 	render(){
 		return(
 			<div>
 			{
-				this.props.loggedOff ? <h3 className='login-alert'>Please Login First</h3> :
+				this.props.loggedOff ? <Login/> :
 				<ul>
 				{
 					this.props.userss.map((user)=>

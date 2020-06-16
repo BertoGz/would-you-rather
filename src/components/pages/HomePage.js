@@ -5,8 +5,6 @@ import {connect} from 'react-redux'
 import QuestionItem from '../QuestionItem'
 
 import {setTabAction} from '../../actions/tab'
-
-import ErrorPage from './ErrorPage'
 import Login from '.././Login'
 class HomePage extends Component{
 

@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import QuestionItem from '../QuestionItem'
 import {connect} from 'react-redux'
+import Login from '../Login'
 class AnswerQuestionPage extends Component{
 	render(){
 
@@ -9,7 +10,7 @@ class AnswerQuestionPage extends Component{
 
 		<div>
 			{
-				this.props.loggedOff ? <h3 className='login-alert'>Please Login to Vote</h3> :
+				this.props.loggedOff ? <Login/> :
 
 				<div className='question-list-container'>
 					<div className='question-tab'>	

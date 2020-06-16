@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 import { connect } from 'react-redux'
 import {formatQuestion} from '../utils/helpers'
 
 import QuestionItem_Face from './QuestionItem_Face'
 import QuestionItem_Details from './QuestionItem_Details'
-import { Link, withRouter } from 'react-router-dom'
-
+import {withRouter } from 'react-router-dom'
+import ErrorPage from './pages/ErrorPage'
 class QuestionItem extends Component{
 
 
@@ -17,16 +17,23 @@ class QuestionItem extends Component{
 	render(){
 		
 			const {id, question } = this.props
-    		const {name, avatar, optionOne} = question
+    		
+
+    		 if (question=== null) {
+      				return <ErrorPage/>
+    			}
+
+    			const {name, avatar, optionOne} = question
 
 		return(
 
 
-
+			
+			
 			<div className='question-item-container'>
 
 				{/*reads router address and displays correct text*/}
-				<div className='question-item-upper'>
+				<div className='question-item-upper' style={{display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
 
 						<Route exact path='/'>
 							{name} asks:
@@ -34,6 +41,8 @@ class QuestionItem extends Component{
 						<Route path='/poll/:id'>
 							Asked by {name}: 
 						</Route>
+
+						
 				</div>
 
 
@@ -54,6 +63,8 @@ class QuestionItem extends Component{
 				</div>
 
 			</div>
+
+	
 		)
 	}
 }
@@ -64,7 +75,9 @@ function mapStateToProps({authedUser,users,questions}, {id}){ //id is a prop pas
 
 	return{
 		id,
-		question: question ? formatQuestion(question,users[question.author],authedUser) : null 
+		question: question ? formatQuestion(question,users[question.author],authedUser) : null ,
+
+
 		// if question is a thing return a formated question, otherwise null
 
 	}

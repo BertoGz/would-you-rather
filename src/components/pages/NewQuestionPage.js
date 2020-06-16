@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form'
 import {handleAddQuestionAction} from '../../actions/questions'
 import {withRouter} from 'react-router-dom'
 import {setTabAction} from '../../actions/tab'
+import Login from '.././Login'
 class NewQuestionPage extends Component{
 
 	constructor(props) {
@@ -49,7 +50,7 @@ class NewQuestionPage extends Component{
 	render(){
 		return(
 			<div>
-				{ this.props.loggedOff ? <h3 className='login-alert'>Please Login First</h3> :
+				{ this.props.loggedOff ? <Login/> :
 					<div className='question-item-container'>
 
 						<div className='question-item-upper'>

@@ -361,9 +361,6 @@ justify-content: center;
   width: 580px;
   margin: 0 auto;
 }
-.dropdown-menu,.show{
-    width: 580px;
-}
 
 .login-alert{
   padding-top: 20px

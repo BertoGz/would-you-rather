@@ -1,9 +1,6 @@
 import React,{Component} from 'react'
-import Navbar from 'react-bootstrap/NavBar'
-import Nav from 'react-bootstrap/Nav'
-import { NavLink } from 'react-router-dom'
 import {withRouter} from 'react-router-dom'
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {handleSetAuthedUser} from '../actions/authedUser'
 
@@ -31,54 +28,58 @@ class NavigationBar extends Component{
 	}
 	render(){
 		return(
+			<div>
+				{ 	 this.props.loggedOff ? null : 
+					<div className='navigation-bar'>
+				
+						<div className='navigation-bar-nav'>
+							<div className='navigation-bar-nav-links'></div>
+							<div className='navigation-bar-nav-links'>
+							
+							<Route exact path='/'>
+								<a onClick={this.toHome} style={{fontWeight: "bold", color:"blue"}}>Home</a>	
+								<a  onClick={this.toAdd}>New Question</a>
+								<a onClick={this.toLeaderboard}>Leaderboard</a>
+							</Route>
 
-			<div className='navigation-bar'>
-				<div className='navigation-bar-nav'>
-					<div className='navigation-bar-nav-links'></div>
-					<div className='navigation-bar-nav-links'>
+							<Route exact path='/add'>
+								<a onClick={this.toHome} >Home</a>	
+								<a  onClick={this.toAdd} style={{fontWeight: "bold", color:"blue"}}>New Question</a>
+								<a onClick={this.toLeaderboard}>Leaderboard</a>
+							</Route>
+							<Route exact path='/leaderboard'>
+								<a onClick={this.toHome} >Home</a>	
+								<a  onClick={this.toAdd} >New Question</a>
+								<a onClick={this.toLeaderboard} style={{fontWeight: "bold", color:"blue"}}>Leaderboard</a>
+							</Route>
+							<Route path='/poll/'>
+								<a onClick={this.toHome} >Home</a>	
+								<a  onClick={this.toAdd} >New Question</a>
+								<a onClick={this.toLeaderboard} >Leaderboard</a>
+							</Route>
+
+
+							</div>
+							{ this.props.authedUser===null &&
+								<div className='navigation-bar-nav-links'>
+									
+							
+								<a onClick={this.toLogin} >Login</a>
+								</div>
+							}
+
+							{ this.props.authedUser!==null &&
+								<div className='navigation-bar-nav-links'>
+									
+								<h5 style={{fontWeight: "bold", verticalAlign:"middle",margin:"10px "}}>Hello, {this.props.authedUser}</h5>
+								<a onClick={this.logOut} >Logout</a>
+								</div>
+							}
+						</div>
 					
-					<Route exact path='/'>
-						<a onClick={this.toHome} style={{fontWeight: "bold", color:"blue"}}>Home</a>	
-						<a  onClick={this.toAdd}>New Question</a>
-						<a onClick={this.toLeaderboard}>Leaderboard</a>
-					</Route>
-
-					<Route exact path='/add'>
-						<a onClick={this.toHome} >Home</a>	
-						<a  onClick={this.toAdd} style={{fontWeight: "bold", color:"blue"}}>New Question</a>
-						<a onClick={this.toLeaderboard}>Leaderboard</a>
-					</Route>
-					<Route exact path='/leaderboard'>
-						<a onClick={this.toHome} >Home</a>	
-						<a  onClick={this.toAdd} >New Question</a>
-						<a onClick={this.toLeaderboard} style={{fontWeight: "bold", color:"blue"}}>Leaderboard</a>
-					</Route>
-					<Route path='/poll/'>
-						<a onClick={this.toHome} >Home</a>	
-						<a  onClick={this.toAdd} >New Question</a>
-						<a onClick={this.toLeaderboard} >Leaderboard</a>
-					</Route>
-
-
 					</div>
-					{ this.props.authedUser===null &&
-						<div className='navigation-bar-nav-links'>
-							
-					
-						<a onClick={this.toLogin} >Login</a>
-						</div>
-					}
-
-					{ this.props.authedUser!==null &&
-						<div className='navigation-bar-nav-links'>
-							
-						<h5 style={{fontWeight: "bold", verticalAlign:"middle",margin:"10px "}}>Hello, {this.props.authedUser}</h5>
-						<a onClick={this.logOut} >Logout</a>
-						</div>
-					}
-				</div>
+				}
 			</div>
-
 		)
 	}
 
@@ -88,6 +89,7 @@ class NavigationBar extends Component{
 
 function mapStateToProps({authedUser}){
 	return{
+		loggedOff: authedUser === null,
 		authedUser,
 	}
 }
