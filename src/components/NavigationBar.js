@@ -29,56 +29,56 @@ class NavigationBar extends Component{
 	render(){
 		return(
 			<div>
-				{ 	 this.props.loggedOff ? null : 
+				
 					<div className='navigation-bar'>
 				
 						<div className='navigation-bar-nav'>
 							<div className='navigation-bar-nav-links'></div>
-							<div className='navigation-bar-nav-links'>
-							
-							<Route exact path='/'>
-								<a onClick={this.toHome} style={{fontWeight: "bold", color:"blue"}}>Home</a>	
-								<a  onClick={this.toAdd}>New Question</a>
-								<a onClick={this.toLeaderboard}>Leaderboard</a>
-							</Route>
+								<div className='navigation-bar-nav-links'>
+								
+								<Route exact path='/'>
+									<p onClick={this.toHome} style={{fontWeight: "bold", color:"blue"}}>Home</p>	
+									<p  onClick={this.toAdd}>New Question</p>
+									<p onClick={this.toLeaderboard}>Leaderboard</p>
+								</Route>
 
-							<Route exact path='/add'>
-								<a onClick={this.toHome} >Home</a>	
-								<a  onClick={this.toAdd} style={{fontWeight: "bold", color:"blue"}}>New Question</a>
-								<a onClick={this.toLeaderboard}>Leaderboard</a>
-							</Route>
-							<Route exact path='/leaderboard'>
-								<a onClick={this.toHome} >Home</a>	
-								<a  onClick={this.toAdd} >New Question</a>
-								<a onClick={this.toLeaderboard} style={{fontWeight: "bold", color:"blue"}}>Leaderboard</a>
-							</Route>
-							<Route path='/poll/'>
-								<a onClick={this.toHome} >Home</a>	
-								<a  onClick={this.toAdd} >New Question</a>
-								<a onClick={this.toLeaderboard} >Leaderboard</a>
-							</Route>
+								<Route exact path='/add'>
+									<p onClick={this.toHome} >Home</p>	
+									<p  onClick={this.toAdd} style={{fontWeight: "bold", color:"blue"}}>New Question</p>
+									<p onClick={this.toLeaderboard}>Leaderboard</p>
+								</Route>
+								<Route exact path='/leaderboard'>
+									<p onClick={this.toHome} >Home</p>	
+									<p  onClick={this.toAdd} >New Question</p>
+									<p onClick={this.toLeaderboard} style={{fontWeight: "bold", color:"blue"}}>Leaderboard</p>
+								</Route>
+								<Route path='/poll/'>
+									<p onClick={this.toHome} >Home</p>	
+									<p  onClick={this.toAdd} >New Question</p>
+									<p onClick={this.toLeaderboard} >Leaderboard</p>
+								</Route>
 
 
+								</div>
+								{ this.props.authedUser===null &&
+									<div className='navigation-bar-nav-links'>
+										
+								
+									<p onClick={this.toLogin} >Login</p>
+									</div>
+								}
+
+								{ this.props.authedUser!==null &&
+									<div className='navigation-bar-nav-links'>
+										
+									<h5 style={{fontWeight: "bold", verticalAlign:"middle",margin:"10px "}}>Hello, {this.props.authedUser}</h5>
+									<p onClick={this.logOut} >Logout</p>
+									</div>
+								}
 							</div>
-							{ this.props.authedUser===null &&
-								<div className='navigation-bar-nav-links'>
-									
-							
-								<a onClick={this.toLogin} >Login</a>
-								</div>
-							}
-
-							{ this.props.authedUser!==null &&
-								<div className='navigation-bar-nav-links'>
-									
-								<h5 style={{fontWeight: "bold", verticalAlign:"middle",margin:"10px "}}>Hello, {this.props.authedUser}</h5>
-								<a onClick={this.logOut} >Logout</a>
-								</div>
-							}
-						</div>
 					
 					</div>
-				}
+				
 			</div>
 		)
 	}

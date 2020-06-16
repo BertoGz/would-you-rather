@@ -300,12 +300,12 @@ justify-content: center;
 
   vertical-align: middle;
 }
-.navigation-bar-nav a{
+.navigation-bar-nav p{
   font-weight: bold;
   margin: 10px;
   vertical-align: middle;
 }
-.navigation-bar-nav a:hover{
+.navigation-bar-nav p:hover{
   color: red;
   cursor:pointer;
 }

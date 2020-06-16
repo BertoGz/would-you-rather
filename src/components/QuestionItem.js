@@ -3,8 +3,8 @@ import {Route} from 'react-router-dom'
 import { connect } from 'react-redux'
 import {formatQuestion} from '../utils/helpers'
 
-import QuestionItem_Face from './QuestionItem_Face'
-import QuestionItem_Details from './QuestionItem_Details'
+import QuestionItemFace from './QuestionItemFace'
+import QuestionItemDetails from './QuestionItemDetails'
 import {withRouter } from 'react-router-dom'
 import ErrorPage from './pages/ErrorPage'
 class QuestionItem extends Component{
@@ -55,10 +55,10 @@ class QuestionItem extends Component{
 					{/*reads router address and renders correct component.*/}
 
 						<Route exact path='/'>
-					    	<QuestionItem_Face questionText={optionOne.text} id={id}/>
+					    	<QuestionItemFace questionText={optionOne.text} id={id}/>
 					     </Route>
 					    <Route path='/poll/:id'>
-					    	<QuestionItem_Details question={question} />
+					    	<QuestionItemDetails question={question} />
 					     </Route>
 				</div>
 

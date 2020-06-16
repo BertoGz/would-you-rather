@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import PollUnanswered from './PollUnanswered'
 import PollResult from './PollResult'
 import {connect} from 'react-redux'
-class QuestionItem_Details extends Component{
+class QuestionItemDetails extends Component{
 
 
 
@@ -37,4 +37,4 @@ function mapStateToProps({authedUser,users,questions}){
   }
 }
 
-export default connect(mapStateToProps)(QuestionItem_Details)
+export default connect(mapStateToProps)(QuestionItemDetails)

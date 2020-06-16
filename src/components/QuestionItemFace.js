@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom'
 
 
 
-class QuestionItem_Face extends Component{
+class QuestionItemFace extends Component{
 
 state={
 
@@ -30,4 +30,4 @@ state={
 
 
 
-export default withRouter(QuestionItem_Face)
+export default withRouter(QuestionItemFace)
