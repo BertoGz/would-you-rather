@@ -4,7 +4,7 @@ class ErrorPage extends Component{
 	render(){
 		return(
 			<div className='container2 center'>
-				<h1>Error 404: Poll does not exist</h1>
+				<h2>Error 404: Location does not exist</h2>
 			</div>
 		)
 	}
