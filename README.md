@@ -6,6 +6,9 @@ In this application the user can view polls and vote.  The user can also create 
 leaderboard. The app has the functionality of logging in as different users, with the same data being
 shown regardless of user.
 
+## installing
+simply run npm install to install all project dependencies
+npm start to run the server
 
 ## Contributing
 
