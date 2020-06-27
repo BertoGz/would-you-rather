@@ -13,3 +13,10 @@ npm start to run the server
 ## Contributing
 
 This repository is the starter code for *all* Udacity students. Therefore, we most likely will not accept pull requests. For details, check out [CONTRIBUTING.md](https://github.com/udacity/reactnd-project-would-you-rather-starter/blob/master/CONTRIBUTING.md).
+
+
+### Screenshots
+<img src="./imgs/screen1.png" alt="screenshot1" width="175"/>
+<img src="./imgs/screen2.png" alt="screenshot2" width="175"/>
+<img src="./imgs/screen3.png" alt="screenshot3" width="175"/>
+<img src="./imgs/screen4.png" alt="screenshot4" width="175"/>
